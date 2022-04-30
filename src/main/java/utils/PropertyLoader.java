@@ -10,12 +10,12 @@ public class PropertyLoader {
         Properties properties = getAllPropFromFile("project.properties");
         return properties.getProperty(key);
     }
-
+//Перегрузка метода
     public static String loadProperty(final String key, String path) {
         Properties properties = getAllPropFromFile(path);
         return properties.getProperty(key);
     }
-
+//Получение переменных из файла
     public static Properties getAllPropFromFile(final String path) {
         Properties properties = new Properties();
 

@@ -16,9 +16,11 @@ import java.net.URL;
 
 public class BaseTest {
     WebDriver driver;
-
-    // комментирование для 8 урока public String setStendKey = System.setProperty("StendKey","stend1");
+//в стендкей заносим стенд1, если хотим запускать через мавен, то эту строчку нужно закомментить
+    public String setStendKey = System.setProperty("StendKey","stend1");
+    //получаем Стенд кей
     public String stendKey = System.getProperty("StendKey");
+//передаем его на проперти лоадер
     public String stendUrl = PropertyLoader.loadProperty(stendKey);
 
     @BeforeTest
@@ -30,8 +32,7 @@ public class BaseTest {
      //   dc.setCapability(ChromeOptions.CAPABILITY,op);
       //  driver= new ChromeDriver();
 
-        //дописано в 7 уроке
-        //op.setCapability("version","100.0");
+        //   op.setCapability("version","100.0");
 
 
         URL hub = null;
@@ -63,6 +64,7 @@ public class BaseTest {
 
 
     //Получение скриншота
+    //возврат массива байтов
     public byte[] getScreenShot(){
         return((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
