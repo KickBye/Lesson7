@@ -14,12 +14,14 @@
         <aspectJs.version>1.9.8</aspectJs.version>
         <fork.Count>1</fork.Count>
         <version>2.22.2</version>
-        <serverPort>4448</serverPort>
+        <serverPort>4449</serverPort>
         <suiteXmlFile>src\test\testng.xml</suiteXmlFile>
+        <someModule.includes>firstTests.SecondTest</someModule.includes>
+        <!--<stend.key>stend1</stend.key>-->
+        <selectedBrowser>firefox</selectedBrowser>
 
-        <someModule.includes>FirstTests.SecondTest</someModule.includes>
 
-        <stend.key>stend1</stend.key>
+
 
     </properties>
 
@@ -53,7 +55,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.1.2</version>
+            <version>3.141.59</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -124,36 +126,44 @@
                             <value>${serverPort}</value>
                         </property>
 
+
                         <property>
-                            <name>StendKey</name>
-                            <value>${stend.key}</value>
+                            <name>selectedBrowser</name>
+                            <value>${selectedBrowser}</value>
                         </property>
 
-                    </systemProperties>
+                        <!--   <property>
+                               <name>StendKey</name>
+                               <value>${stend.key}</value>
+                           </property>!-->
+
+                       </systemProperties>
 
 
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectJs.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
-            </plugin>
 
 
-        </plugins>
+                   </configuration>
+                   <dependencies>
+                       <dependency>
+                           <groupId>org.aspectj</groupId>
+                           <artifactId>aspectjweaver</artifactId>
+                           <version>${aspectJs.version}</version>
+                       </dependency>
+                   </dependencies>
+               </plugin>
+               <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-compiler-plugin</artifactId>
+                   <configuration>
+                       <source>17</source>
+                       <target>17</target>
+                   </configuration>
+               </plugin>
 
 
-    </build>
+           </plugins>
 
-</project>
+
+       </build>
+
+   </project>
