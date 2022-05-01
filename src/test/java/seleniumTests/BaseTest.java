@@ -5,6 +5,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
@@ -25,6 +26,9 @@ public class BaseTest {
 
     @BeforeTest
     public void beforeT(){
+        String selectedBrowser="chrome";
+
+        //ГУГЛ
         System.setProperty("webdriver.chrome.driver","./src/main/resources/chromedriver.exe");
         ChromeOptions op = new ChromeOptions();
         //закомментировано в 6 уроке
@@ -34,6 +38,11 @@ public class BaseTest {
 
         //   op.setCapability("version","100.0");
 
+        //ФАЕРФОКС
+        System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver.exe");
+        FirefoxOptions fo = new FirefoxOptions();
+        fo.setCapability("browserName","firefox");
+
 
         URL hub = null;
         try {
@@ -42,11 +51,20 @@ public class BaseTest {
             e.printStackTrace();
         }
 
-        driver = new RemoteWebDriver(hub,op);
-
-
-
+        if (selectedBrowser=="firefox"){
+            driver = new RemoteWebDriver(hub,fo);}
+        else if (selectedBrowser=="chrome"){
+            driver = new RemoteWebDriver(hub,op);}
+        else{
+            System.out.println("Браузер не определен");
+        }
     }
+
+
+
+
+
+
 
 
     @AfterTest
